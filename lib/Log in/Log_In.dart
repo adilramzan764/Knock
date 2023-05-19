@@ -6,6 +6,8 @@ import 'package:knock/Political%20Dashboard/Political.dart';
 import 'package:knock/Sign%20Up/Sign_Up.dart';
 import 'package:knock/Terms%20%20Conditions/Terms_Conditions.dart';
 
+import '../Coperate/Cooperate_Dashboard.dart';
+
 class Log_In extends StatefulWidget {
   const Log_In({Key? key}) : super(key: key);
 
@@ -18,12 +20,11 @@ class _Log_InState extends State<Log_In> {
   TextEditingController password = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-
   bool _showError = false;
   bool _showpass = false;
 
   String? _validateInput(String? value) {
-    if (value == null || value.isEmpty ) {
+    if (value == null || value.isEmpty) {
       return 'Please enter a value';
     }
     return null;
@@ -170,7 +171,7 @@ class _Log_InState extends State<Log_In> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Perform the desired action for the "Cooperate Account" button
+                      Get.to(() => Cooperate_Dashboard());
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xffED7D2B),
@@ -258,7 +259,6 @@ class _Log_InState extends State<Log_In> {
                               fontSize: 15,
                               color: Colors.black,
                               fontWeight: FontWeight.bold)),
-
                       onSaved: (String? value) {
                         print(value);
                         email.text = value.toString();
