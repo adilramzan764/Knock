@@ -104,7 +104,6 @@ class Data_Manage_Screen extends StatelessWidget {
             ),
             Expanded(
               child: TabBarView(
-                
                 children: [
                   Column(
                     children: [
@@ -551,7 +550,6 @@ class Data_Manage_Screen extends StatelessWidget {
                 ],
               ),
             ),
-            // TabBar(tabs:);
           ],
         ),
       ),
