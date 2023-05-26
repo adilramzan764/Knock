@@ -368,6 +368,7 @@ class Team_Profile extends StatelessWidget {
                                           ),
                                         ),
                                       ),
+                                      SizedBox(height: 10),
                                     ],
                                   ),
                                   Column(
