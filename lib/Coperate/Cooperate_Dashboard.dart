@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:horizontal_center_date_picker/datepicker_controller.dart';
 import 'package:knock/Coperate/Coperate_Compaigns.dart';
+import 'package:knock/Coperate/District.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -68,6 +69,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
         return 0;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,7 +120,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 50),
               InkWell(
                 onTap: () {
                   Get.back();
@@ -312,7 +314,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                       ),
                       hintText: "Search here",
                       hintStyle:
-                      TextStyle(fontSize: 17, color: Color(0xffafafaf))),
+                          TextStyle(fontSize: 17, color: Color(0xffafafaf))),
                 ),
               ),
               SizedBox(height: 10),
@@ -331,17 +333,12 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                       text2: "65",
                     ),
                     SizedBox(width: 8),
-                    InkWell(
-                      onTap: () {
-                        Get.to(() => Team_Members());
-                      },
-                      child: Political_Dashboard_Listview(
-                        color: "a",
-                        color1: "b",
-                        img: "assets/teams.svg",
-                        text1: "Teams",
-                        text2: "6",
-                      ),
+                    Political_Dashboard_Listview(
+                      color: "a",
+                      color1: "b",
+                      img: "assets/teams.svg",
+                      text1: "Teams",
+                      text2: "6",
                     ),
                     SizedBox(width: 8),
                     Political_Dashboard_Listview(
@@ -460,7 +457,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                             Text(
                               "Arkansas",
                               style:
-                              TextStyle(fontSize: 16, color: Colors.black),
+                                  TextStyle(fontSize: 16, color: Colors.black),
                             ),
                             Text(
                               " - UK",
@@ -477,7 +474,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                             Text(
                               "Arkansas",
                               style:
-                              TextStyle(fontSize: 16, color: Colors.black),
+                                  TextStyle(fontSize: 16, color: Colors.black),
                             ),
                             Text(
                               " - PK",
@@ -494,7 +491,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                             Text(
                               "Arkansas",
                               style:
-                              TextStyle(fontSize: 16, color: Colors.black),
+                                  TextStyle(fontSize: 16, color: Colors.black),
                             ),
                             Text(
                               " - AFG",
@@ -554,7 +551,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                             Text(
                               "Team Lead | Covering 2Km",
                               style:
-                              TextStyle(fontSize: 13, color: Colors.black),
+                                  TextStyle(fontSize: 13, color: Colors.black),
                             )
                           ],
                         ),
@@ -741,7 +738,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                       Text(
                         "23 Mins ago",
                         style:
-                        TextStyle(fontSize: 10, color: Color(0xffbfbfbf)),
+                            TextStyle(fontSize: 10, color: Color(0xffbfbfbf)),
                       )
                     ],
                   )
@@ -818,7 +815,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                       Text(
                         "30 Mins ago",
                         style:
-                        TextStyle(fontSize: 10, color: Color(0xffbfbfbf)),
+                            TextStyle(fontSize: 10, color: Color(0xffbfbfbf)),
                       )
                     ],
                   )
@@ -895,7 +892,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                       Text(
                         "1 day ago",
                         style:
-                        TextStyle(fontSize: 10, color: Color(0xffbfbfbf)),
+                            TextStyle(fontSize: 10, color: Color(0xffbfbfbf)),
                       )
                     ],
                   )
@@ -956,7 +953,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                             child: Text(
                               "This week1",
                               style:
-                              TextStyle(fontSize: 15, color: Colors.black),
+                                  TextStyle(fontSize: 15, color: Colors.black),
                             ),
                             value: "This week1",
                           ),
@@ -1040,9 +1037,9 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                                   SalesData(DateTime(2021, 12, 1), 45),
                                 ],
                                 xValueMapper: (SalesData sales, _) =>
-                                sales.year,
+                                    sales.year,
                                 yValueMapper: (SalesData sales, _) =>
-                                sales.sales,
+                                    sales.sales,
                                 color: Colors.white,
                                 width: 5)
                           ],
@@ -1054,7 +1051,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                               SizedBox(height: 15),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Active Campaigns:",
@@ -1068,7 +1065,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [

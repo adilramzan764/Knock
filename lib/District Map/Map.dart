@@ -127,7 +127,8 @@ class _MapScreenState extends State<MapScreen> {
                                       border: InputBorder.none,
                                       labelText: "District:",
                                       labelStyle: TextStyle(
-                                          fontSize: 14, color: Color(0xffa3a3a3)),
+                                          fontSize: 14,
+                                          color: Color(0xffa3a3a3)),
                                       hintText: "Power Canvassing",
                                       hintStyle: TextStyle(
                                           fontSize: 14,
@@ -167,8 +168,8 @@ class _MapScreenState extends State<MapScreen> {
                             ),
                             border: InputBorder.none,
                             labelText: "State:",
-                            labelStyle:
-                                TextStyle(fontSize: 14, color: Color(0xffa3a3a3)),
+                            labelStyle: TextStyle(
+                                fontSize: 14, color: Color(0xffa3a3a3)),
                             hintText: "Power Canvassing",
                             hintStyle: TextStyle(
                                 fontSize: 14,
@@ -180,7 +181,8 @@ class _MapScreenState extends State<MapScreen> {
                   SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Align(alignment: Alignment.topLeft,
+                    child: Align(
+                      alignment: Alignment.topLeft,
                       child: Text(
                         "Demographics:",
                         style: TextStyle(
@@ -209,8 +211,18 @@ class _MapScreenState extends State<MapScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Population:",style: TextStyle(fontSize: 14,color: Colors.black),),
-                                Text("3,456",style: TextStyle(fontSize:30,color: Colors.black,fontWeight: FontWeight.bold),),
+                                Text(
+                                  "Population:",
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.black),
+                                ),
+                                Text(
+                                  "3,456",
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ],
                             ),
                           ),
@@ -228,8 +240,18 @@ class _MapScreenState extends State<MapScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Reg. Voters:",style: TextStyle(fontSize: 14,color: Colors.black),),
-                                Text("3,211",style: TextStyle(fontSize:30,color: Colors.black,fontWeight: FontWeight.bold),),
+                                Text(
+                                  "Reg. Voters:",
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.black),
+                                ),
+                                Text(
+                                  "3,211",
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ],
                             ),
                           ),
@@ -264,468 +286,524 @@ class _MapScreenState extends State<MapScreen> {
                   Expanded(
                     child: TabBarView(
                       children: [
-                        Stack(
-                          children:[
-                            Positioned(
-                              top: 0,
-                              bottom: 0,
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    SizedBox(height: 20),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Import",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                        Stack(children: [
+                          Positioned(
+                            top: 0,
+                            bottom: 0,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 20),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Import",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Import",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Import",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Import",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Import",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Import",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Import",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Import",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Import",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Import",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Import",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                  ],
-                                ),
+                                  ),
+                                  SizedBox(height: 10),
+                                ],
                               ),
                             ),
-                          ]
-                        ),
-                        Stack(
-                          children: [
-                            Positioned(
-                              top: 0,
-                              bottom: 0,
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    SizedBox(height: 20),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Export",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                          ),
+                        ]),
+                        Stack(children: [
+                          Positioned(
+                            top: 0,
+                            bottom: 0,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 20),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Export",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Export",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Export",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Export",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Export",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Export",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Export",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Export",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Export",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xfffafafa),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      height: 60,
-                                      width: Get.width * 0.9,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset("assets/import export.svg"),
-                                            SizedBox(width: 10),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  "File Export",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "Mon Jun 20 2022, 12:06:36",
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Color(0xffa3a3a3)),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xfffafafa),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    height: 60,
+                                    width: Get.width * 0.9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/import export.svg"),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "File Export",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Mon Jun 20 2022, 12:06:36",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Color(0xffa3a3a3)),
+                                              )
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                  ],
-                                ),
+                                  ),
+                                  SizedBox(height: 10),
+                                ],
                               ),
                             ),
-                          ]
-                        ),
+                          ),
+                        ]),
                       ],
                     ),
                   ),

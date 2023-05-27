@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:knock/Canvasser/Canvasser_Home.dart';
 import 'package:knock/Political%20Dashboard/Political.dart';
 import 'package:knock/Sign%20Up/Sign_Up.dart';
 import 'package:knock/Terms%20%20Conditions/Terms_Conditions.dart';
@@ -113,7 +114,8 @@ class _Log_InState extends State<Log_In> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Perform the desired action for the "Canvasser" button
+                      Get.to(() => Canvasser_Home());
+                      // Perform th desired action for the "Canvasser" button
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xffED7D2B),

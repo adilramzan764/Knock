@@ -154,7 +154,9 @@ class Compaigns_Details extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xffed7d2b),
+                      image: DecorationImage(
+                          image: AssetImage("assets/Jacqueline-Fernandez.jpg"),
+                          fit: BoxFit.cover),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     height: 55,
