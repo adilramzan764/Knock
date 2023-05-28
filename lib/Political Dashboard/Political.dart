@@ -1306,7 +1306,7 @@ class _PoliticalState extends State<Political> {
               ),
               SizedBox(
                 height: 20,
-              )
+              ),
             ],
           ),
         ),

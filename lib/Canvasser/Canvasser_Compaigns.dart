@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:knock/Canvasser/Analytics.dart';
 
 import '../Coperate/Compaign_Details.dart';
 
@@ -34,7 +35,9 @@ class Canvasser_Compaigns extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => Analytics());
+                      },
                       child: SvgPicture.asset("assets/canvasser analysis.svg"))
                 ],
               ),
