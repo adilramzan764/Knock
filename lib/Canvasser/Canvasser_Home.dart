@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:knock/Canvasser/Canvasser_Customer.dart';
+import 'package:knock/Canvasser/Walk_Sheet.dart';
 import 'package:knock/Coperate/District.dart';
 
 import '../Coperate/Coperate_Compaigns.dart';
@@ -114,20 +116,22 @@ class Canvasser_Home extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 22),
-              Row(
-                children: [
-                  SvgPicture.asset("assets/drawer hustory.svg"),
-                  SizedBox(width: 8),
-                  Text(
-                    "Walk Sheet",
-                    style: TextStyle(fontSize: 15, color: Colors.black),
-                  ),
-                ],
+              InkWell(onTap: (){Get.to(() => Walk_Sheet());},
+                child: Row(
+                  children: [
+                    SvgPicture.asset("assets/drawer hustory.svg"),
+                    SizedBox(width: 8),
+                    Text(
+                      "Walk Sheet",
+                      style: TextStyle(fontSize: 15, color: Colors.black),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 22),
               InkWell(
                 onTap: () {
-                  Get.to(() => Team_Members());
+                  Get.to(() => Canvasser_Customer());
                 },
                 child: Row(
                   children: [

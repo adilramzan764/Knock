@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:knock/Canvasser/New_Customer.dart';
 
-class Customer extends StatelessWidget {
-  const Customer({Key? key}) : super(key: key);
+class Canvasser_Customer extends StatelessWidget {
+  const Canvasser_Customer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,11 @@ class Customer extends StatelessWidget {
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(),
+                  InkWell(
+                      onTap: () {
+                        Get.to(() => New_Customer());
+                      },
+                      child: SvgPicture.asset("assets/add icon.svg"))
                 ],
               ),
               SizedBox(height: 20),

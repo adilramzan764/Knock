@@ -936,7 +936,7 @@ class _PoliticalState extends State<Political> {
                     height: 50,
                     width: Get.width * 0.3,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: DropdownButtonFormField(
                         decoration: InputDecoration(
                             border: InputBorder.none,

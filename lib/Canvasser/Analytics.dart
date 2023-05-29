@@ -106,7 +106,7 @@ class _AnalyticsState extends State<Analytics> {
                     height: 50,
                     width: Get.width * 0.3,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: DropdownButtonFormField(
                         decoration: InputDecoration(
                             border: InputBorder.none,
@@ -311,7 +311,7 @@ class _AnalyticsState extends State<Analytics> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Customer Ratings:",
+                        "Customer Voting:",
                         style: TextStyle(
                             fontSize: 21,
                             fontWeight: FontWeight.bold,
@@ -321,11 +321,10 @@ class _AnalyticsState extends State<Analytics> {
                       Row(
                         children: [
                           Text(
-                            "Total: 5.0",
+                            "Total: 233",
                             style: TextStyle(fontSize: 14, color: Colors.white),
                           ),
-                          SizedBox(width: 3),
-                          SvgPicture.asset("assets/Star.svg")
+
                         ],
                       ),
                       SizedBox(
@@ -348,15 +347,13 @@ class _AnalyticsState extends State<Analytics> {
                                 Row(
                                   children: [
                                     Text(
-                                      "1",
+                                      "21 Jan",
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w500),
                                     ),
-                                    SvgPicture.asset(
-                                      "assets/Star.svg",
-                                    )
+
                                   ],
                                 ),
                               ],
@@ -372,15 +369,13 @@ class _AnalyticsState extends State<Analytics> {
                                 Row(
                                   children: [
                                     Text(
-                                      "2",
+                                      "22 Jan",
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w500),
                                     ),
-                                    SvgPicture.asset(
-                                      "assets/Star.svg",
-                                    )
+
                                   ],
                                 ),
                               ],
@@ -396,15 +391,13 @@ class _AnalyticsState extends State<Analytics> {
                                 Row(
                                   children: [
                                     Text(
-                                      "3",
+                                      "23 Jan",
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w500),
                                     ),
-                                    SvgPicture.asset(
-                                      "assets/Star.svg",
-                                    )
+
                                   ],
                                 ),
                               ],
@@ -420,15 +413,13 @@ class _AnalyticsState extends State<Analytics> {
                                 Row(
                                   children: [
                                     Text(
-                                      "4",
+                                      "24 Jan",
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w500),
                                     ),
-                                    SvgPicture.asset(
-                                      "assets/Star.svg",
-                                    )
+
                                   ],
                                 ),
                               ],
@@ -444,15 +435,13 @@ class _AnalyticsState extends State<Analytics> {
                                 Row(
                                   children: [
                                     Text(
-                                      "5",
+                                      "25 Jan",
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.w500),
                                     ),
-                                    SvgPicture.asset(
-                                      "assets/Star.svg",
-                                    )
+
                                   ],
                                 ),
                               ],

@@ -5,17 +5,14 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:horizontal_center_date_picker/datepicker_controller.dart';
 import 'package:knock/Coperate/Coperate_Compaigns.dart';
-import 'package:knock/Coperate/District.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
 import '../Data Management/Data_Manage_Screen.dart';
 import '../District Map/Map.dart';
 import '../List View Projects/Political_Dashboard_Listview.dart';
 import '../Notification/Political_Notification.dart';
 import '../Political Dashboard/Manage_Campaigns.dart';
 import '../Political Dashboard/Team_Members.dart';
-import '../Political Dashboard/Team_Profile.dart';
 import '../Setting/Set_Screen.dart';
 
 class Cooperate_Dashboard extends StatefulWidget {
@@ -931,7 +928,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
                     height: 50,
                     width: Get.width * 0.3,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: DropdownButtonFormField(
                         decoration: InputDecoration(
                             border: InputBorder.none,
