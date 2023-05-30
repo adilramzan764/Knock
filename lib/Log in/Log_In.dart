@@ -279,17 +279,18 @@ class _Log_InState extends State<Log_In> {
                     ),
                   // ),
                   SizedBox(height: 10),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xfffafafa),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    height: 60,
-                    width: MediaQuery.of(context).size.width / 1.1,
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: Color(0xfffafafa),
+                  //     borderRadius: BorderRadius.circular(15),
+                  //   ),
+                  //   height: 60,
+                  //   width: MediaQuery.of(context).size.width / 1.1,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: TextFormField(
                       controller: password,
                       decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 23),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color(0xffED7D2B), width: 2.0),
@@ -319,6 +320,7 @@ class _Log_InState extends State<Log_In> {
                       },
                     ),
                   ),
+                  // ),
                   if (_showError)
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
@@ -614,7 +616,8 @@ class _Log_InState extends State<Log_In> {
                 "Terms & Conditions | Privacy Policies",
                 style: TextStyle(fontSize: 13, color: Color(0xffb3b3b3)),
               ),
-            )
+            ),
+            SizedBox(height: 10),
           ],
         ),
       ),
