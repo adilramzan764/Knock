@@ -25,7 +25,7 @@ class New_Voter extends StatelessWidget {
                       },
                       child: SvgPicture.asset("assets/Back Navigator.svg")),
                   Text(
-                    "Walk Sheet",
+                    "New Voter",
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,

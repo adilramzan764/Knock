@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:horizontal_center_date_picker/datepicker_controller.dart';
-import 'package:knock/Coperate/Coperate_Compaigns.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../Data Management/Data_Manage_Screen.dart';
@@ -151,9 +150,7 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
               ),
               SizedBox(height: 22),
               InkWell(
-                onTap: () {
-                  Get.to(() => Coperate_Compaigns());
-                },
+                onTap: () {Get.to(() => Manage_Campaigns());},
                 child: Row(
                   children: [
                     SvgPicture.asset("assets/drawer compagins.svg"),

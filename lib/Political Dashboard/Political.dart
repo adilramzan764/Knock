@@ -118,7 +118,7 @@ class _PoliticalState extends State<Political> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 50),
               InkWell(
                 onTap: () {
                   Get.back();
@@ -134,7 +134,7 @@ class _PoliticalState extends State<Political> {
                   ],
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 23),
               InkWell(
                 onTap: () {
                   Get.to(() => MapScreen());
@@ -150,7 +150,7 @@ class _PoliticalState extends State<Political> {
                   ],
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 23),
               InkWell(
                 onTap: () {
                   Get.to(() => Manage_Campaigns());
@@ -166,7 +166,7 @@ class _PoliticalState extends State<Political> {
                   ],
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 23),
               Row(
                 children: [
                   SvgPicture.asset("assets/drawer hustory.svg"),
@@ -177,7 +177,7 @@ class _PoliticalState extends State<Political> {
                   )
                 ],
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 23),
               InkWell(
                 onTap: () {
                   Get.to(() => Team_Members());
@@ -193,7 +193,7 @@ class _PoliticalState extends State<Political> {
                   ],
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 23),
               Row(
                 children: [
                   SvgPicture.asset("assets/drawer analytics.svg"),
@@ -204,7 +204,7 @@ class _PoliticalState extends State<Political> {
                   )
                 ],
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 23),
               InkWell(
                 onTap: () {
                   Get.to(() => Data_Manage_Screen());
@@ -220,7 +220,7 @@ class _PoliticalState extends State<Political> {
                   ],
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 23),
               InkWell(
                 onTap: () {
                   Get.to(() => Set_Screen());

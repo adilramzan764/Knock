@@ -5,8 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:knock/Log%20in/Log_In.dart';
-import 'package:knock/Political%20Dashboard/Political.dart';
-import 'package:knock/Terms%20%20Conditions./Terms_Conditions.dart';
 
 class Sign_Up extends StatefulWidget {
   const Sign_Up({Key? key}) : super(key: key);

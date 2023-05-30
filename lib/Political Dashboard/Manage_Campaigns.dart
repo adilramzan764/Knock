@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:knock/Political%20Dashboard/Compaign_Details.dart';
+import 'package:knock/Political%20Dashboard/New_Compaigns.dart';
 
 class Manage_Campaigns extends StatelessWidget {
   const Manage_Campaigns({Key? key}) : super(key: key);
@@ -31,7 +33,11 @@ class Manage_Campaigns extends StatelessWidget {
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
-                  SvgPicture.asset("assets/add icon.svg")
+                  InkWell(
+                      onTap: () {
+                        Get.to(() => New_Compaings());
+                      },
+                      child: SvgPicture.asset("assets/add icon.svg"))
                 ],
               ),
               SizedBox(height: 30),
@@ -169,78 +175,83 @@ class Manage_Campaigns extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                height: 70,
-                width: Get.width * 0.9,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset("assets/orange speaker.svg"),
-                          SizedBox(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Host: Billy",
-                                style: TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black),
-                              ),
-                              Text(
-                                "03835 Donnelly Point",
-                                style: TextStyle(
-                                    fontSize: 14, color: Color(0xffb3b3b3)),
-                              ),
-                              Row(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "From:",
-                                        style: TextStyle(
-                                            fontSize: 11, color: Colors.black),
-                                      ),
-                                      Text(
-                                        " 24-01-2023",
-                                        style: TextStyle(
-                                            fontSize: 11,
-                                            color: Color(0xffb3b3b3)),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "To:",
-                                        style: TextStyle(
-                                            fontSize: 11, color: Colors.black),
-                                      ),
-                                      Text(
-                                        " 24-02-2023",
-                                        style: TextStyle(
-                                            fontSize: 11,
-                                            color: Color(0xffb3b3b3)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                      SvgPicture.asset("assets/call back.svg"),
-                    ],
+              InkWell(
+                onTap: () {Get .to(() => Compaigns_Details());},
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xfffafafa),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  height: 70,
+                  width: Get.width * 0.9,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset("assets/orange speaker.svg"),
+                            SizedBox(width: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Host: Billy",
+                                  style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                ),
+                                Text(
+                                  "03835 Donnelly Point",
+                                  style: TextStyle(
+                                      fontSize: 14, color: Color(0xffb3b3b3)),
+                                ),
+                                Row(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "From:",
+                                          style: TextStyle(
+                                              fontSize: 11,
+                                              color: Colors.black),
+                                        ),
+                                        Text(
+                                          " 24-01-2023",
+                                          style: TextStyle(
+                                              fontSize: 11,
+                                              color: Color(0xffb3b3b3)),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "To:",
+                                          style: TextStyle(
+                                              fontSize: 11,
+                                              color: Colors.black),
+                                        ),
+                                        Text(
+                                          " 24-02-2023",
+                                          style: TextStyle(
+                                              fontSize: 11,
+                                              color: Color(0xffb3b3b3)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                        SvgPicture.asset("assets/call back.svg"),
+                      ],
+                    ),
                   ),
                 ),
               ),

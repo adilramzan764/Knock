@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:knock/Canvasser/Analytics.dart';
 import 'package:knock/Canvasser/Second_Canvasser_Detail.dart';
-
-import '../Coperate/Compaign_Details.dart';
 import 'Canvasser_detail.dart';
 
 class Canvasser_Compaigns extends StatelessWidget {

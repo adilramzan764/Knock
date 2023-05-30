@@ -4,13 +4,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:knock/Canvasser/Canvasser_Customer.dart';
 import 'package:knock/Canvasser/Walk_Sheet.dart';
-import 'package:knock/Coperate/District.dart';
-
-import '../Coperate/Coperate_Compaigns.dart';
-import '../Data Management/Data_Manage_Screen.dart';
-import '../List View Projects/Political_Dashboard_Listview.dart';
+import 'package:knock/Canvasser/District.dart';
 import '../Notification/Political_Notification.dart';
-import '../Political Dashboard/Team_Members.dart';
 import '../Setting/Set_Screen.dart';
 import 'Canvasser_Compaigns.dart';
 

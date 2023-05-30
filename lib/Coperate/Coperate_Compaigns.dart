@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:knock/Coperate/New_Compaigns.dart';
+import 'package:knock/Political%20Dashboard/New_Compaigns.dart';
 
-import 'Compaign_Details.dart';
+import '../Political Dashboard/Compaign_Details.dart';
 
 class Coperate_Compaigns extends StatelessWidget {
   const Coperate_Compaigns({Key? key}) : super(key: key);
