@@ -4,8 +4,28 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class Team_Profile extends StatelessWidget {
+class Team_Profile extends StatefulWidget {
   const Team_Profile({Key? key}) : super(key: key);
+
+  @override
+  State<Team_Profile> createState() => _Team_ProfileState();
+}
+
+class _Team_ProfileState extends State<Team_Profile>
+    with TickerProviderStateMixin {
+  late TabController _nestedTabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nestedTabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _nestedTabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +70,7 @@ class Team_Profile extends StatelessWidget {
                   height: 70,
                   width: Get.width,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -456,8 +476,716 @@ class Team_Profile extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Column(
-                      children: [],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Column(
+                        children: [
+                          SvgPicture.asset("assets/canvasser map.svg"),
+                          TabBar(
+                            controller: _nestedTabController,
+                            indicator: BoxDecoration(),
+                            unselectedLabelColor: Colors.black54,
+                            isScrollable: true,
+                            tabs: <Widget>[
+                              Tab(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffed7d2b),
+                                    borderRadius: BorderRadius.circular(32),
+                                  ),
+                                  height: 35,
+                                  width: Get.width * 0.3,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "Campaigns Area",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Tab(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffed7d2b),
+                                    borderRadius: BorderRadius.circular(32),
+                                  ),
+                                  height: 35,
+                                  width: Get.width * 0.255,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "Campaigns",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Expanded(
+                            child: TabBarView(
+                              controller: _nestedTabController,
+                              children: <Widget>[
+                                SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(height: 10),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xfffafafa),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          height: 60,
+                                          width: Get.width,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 15),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "Louisiana",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  " - USA",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Color(0xffb3b3b3)),
+                                                )
+                                              ],
+                                            ),
+                                          )),
+                                      SizedBox(height: 10),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xfffafafa),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          height: 60,
+                                          width: Get.width,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 15),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "South Carolina",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  " - USA",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Color(0xffb3b3b3)),
+                                                )
+                                              ],
+                                            ),
+                                          )),
+                                      SizedBox(height: 10),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xfffafafa),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          height: 60,
+                                          width: Get.width,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 15),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "Iowa",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  " - USA",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Color(0xffb3b3b3)),
+                                                )
+                                              ],
+                                            ),
+                                          )),
+                                      SizedBox(height: 10),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xfffafafa),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          height: 60,
+                                          width: Get.width,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 15),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "West Virginia",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  " - USA",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Color(0xffb3b3b3)),
+                                                )
+                                              ],
+                                            ),
+                                          )),
+                                      SizedBox(height: 10),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xfffafafa),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          height: 60,
+                                          width: Get.width,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 15),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "Hawaii",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  " - USA",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Color(0xffb3b3b3)),
+                                                )
+                                              ],
+                                            ),
+                                          )),
+                                      SizedBox(height: 10),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xfffafafa),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          height: 60,
+                                          width: Get.width,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 15),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "Vermont",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  " - USA",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Color(0xffb3b3b3)),
+                                                )
+                                              ],
+                                            ),
+                                          )),
+                                      SizedBox(height: 10),
+                                    ],
+                                  ),
+                                ),
+                                SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(height: 10),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xfffafafa),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        height: 70,
+                                        width: Get.width * 0.9,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                      "assets/orange speaker.svg"),
+                                                  SizedBox(width: 10),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Text(
+                                                            "Customer:",
+                                                            style: TextStyle(
+                                                                fontSize: 13,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                          Text(
+                                                            "Lysanne",
+                                                            style: TextStyle(
+                                                                fontSize: 13,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Text(
+                                                        "022 Kirlin Spurs",
+                                                        style: TextStyle(
+                                                            fontSize: 14,
+                                                            color: Color(
+                                                                0xffb3b3b3)),
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "From:",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                " 24-01-2023",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Color(
+                                                                        0xffb3b3b3)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          SizedBox(width: 5),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "To:",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                " 24-02-2023",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Color(
+                                                                        0xffb3b3b3)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              SvgPicture.asset(
+                                                  "assets/call back.svg"),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xfffafafa),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        height: 70,
+                                        width: Get.width * 0.9,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                      "assets/orange speaker.svg"),
+                                                  SizedBox(width: 10),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Text(
+                                                            "Customer:",
+                                                            style: TextStyle(
+                                                                fontSize: 13,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                          Text(
+                                                            "Ryley",
+                                                            style: TextStyle(
+                                                                fontSize: 13,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Text(
+                                                        "09974 Adrienne Locks",
+                                                        style: TextStyle(
+                                                            fontSize: 14,
+                                                            color: Color(
+                                                                0xffb3b3b3)),
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "From:",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                " 24-01-2023",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Color(
+                                                                        0xffb3b3b3)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          SizedBox(width: 5),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "To:",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                " 24-02-2023",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Color(
+                                                                        0xffb3b3b3)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              SvgPicture.asset(
+                                                  "assets/no home.svg"),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xfffafafa),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        height: 70,
+                                        width: Get.width * 0.9,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                      "assets/orange speaker.svg"),
+                                                  SizedBox(width: 10),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Text(
+                                                            "Customer:",
+                                                            style: TextStyle(
+                                                                fontSize: 13,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                          Text(
+                                                            "Virginie",
+                                                            style: TextStyle(
+                                                                fontSize: 13,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Text(
+                                                        "145 Providenci Passage",
+                                                        style: TextStyle(
+                                                            fontSize: 14,
+                                                            color: Color(
+                                                                0xffb3b3b3)),
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "From:",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                " 24-01-2023",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Color(
+                                                                        0xffb3b3b3)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          SizedBox(width: 5),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "To:",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                " 24-02-2023",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Color(
+                                                                        0xffb3b3b3)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              SvgPicture.asset(
+                                                  "assets/call back.svg"),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xfffafafa),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        height: 70,
+                                        width: Get.width * 0.9,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                      "assets/orange speaker.svg"),
+                                                  SizedBox(width: 10),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Text(
+                                                            "Customer:",
+                                                            style: TextStyle(
+                                                                fontSize: 13,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                          Text(
+                                                            "Kattie",
+                                                            style: TextStyle(
+                                                                fontSize: 13,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Text(
+                                                        "8793 Elna Underpass",
+                                                        style: TextStyle(
+                                                            fontSize: 14,
+                                                            color: Color(
+                                                                0xffb3b3b3)),
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "From:",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                " 24-01-2023",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Color(
+                                                                        0xffb3b3b3)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          SizedBox(width: 5),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                "To:",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                              Text(
+                                                                " 24-02-2023",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        11,
+                                                                    color: Color(
+                                                                        0xffb3b3b3)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              SvgPicture.asset(
+                                                  "assets/no home.svg"),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ]),
                 )
@@ -470,7 +1198,12 @@ class Team_Profile extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SvgPicture.asset("assets/back navigator white.svg"),
+                        InkWell(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: SvgPicture.asset(
+                                "assets/back navigator white.svg")),
                         Text(
                           "Team Profile",
                           style: TextStyle(

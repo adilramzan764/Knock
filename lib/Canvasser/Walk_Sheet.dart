@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:knock/Canvasser/Canvasser_Profile.dart';
 import 'package:knock/Canvasser/New_Voter.dart';
 
 
@@ -71,64 +72,66 @@ class Walk_Sheet extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                height: 60,
-                width: Get.width * 0.9,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("assets/AAAAAA.jpg"),
-                                  fit: BoxFit.cover),
-                              color: Color(0xfff5f5f5),
-                              borderRadius: BorderRadius.circular(12),
+              InkWell(onTap: (){Get.to(()=> Canvasser_Profile());},
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xfffafafa),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  height: 60,
+                  width: Get.width * 0.9,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("assets/AAAAAA.jpg"),
+                                    fit: BoxFit.cover),
+                                color: Color(0xfff5f5f5),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              height: 45,
+                              width: Get.width * 0.145,
                             ),
-                            height: 45,
-                            width: Get.width * 0.145,
-                          ),
-                          SizedBox(width: 5),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Matthew Frami MD",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Votes:",
-                                    style: TextStyle(
-                                        fontSize: 14, color: Color(0xffafafaf)),
-                                  ),
-                                  Text(
-                                    "4",
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                      SvgPicture.asset("assets/arrow icon.svg"),
-                    ],
+                            SizedBox(width: 5),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Matthew Frami MD",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 5),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Votes:",
+                                      style: TextStyle(
+                                          fontSize: 14, color: Color(0xffafafaf)),
+                                    ),
+                                    Text(
+                                      "4",
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        SvgPicture.asset("assets/arrow icon.svg"),
+                      ],
+                    ),
                   ),
                 ),
               ),

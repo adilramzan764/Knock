@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:knock/Canvasser/New_Customer.dart';
+import 'package:knock/Canvasser/Profile.dart';
 
 class Canvasser_Customer extends StatelessWidget {
   const Canvasser_Customer({Key? key}) : super(key: key);
@@ -72,39 +73,45 @@ class Canvasser_Customer extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                height: 65,
-                width: Get.width,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset("assets/customer icon.svg", height: 35),
-                      SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Carole Schmeler",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            "03835 Donnelly Point",
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xffb3b3b3)),
-                          )
-                        ],
-                      )
-                    ],
+              InkWell(
+                onTap: () {
+                  Get.to(() => Profile());
+                  },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xfffafafa),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  height: 65,
+                  width: Get.width,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset("assets/customer icon.svg",
+                            height: 35),
+                        SizedBox(width: 10),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Carole Schmeler",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              "03835 Donnelly Point",
+                              style: TextStyle(
+                                  fontSize: 14, color: Color(0xffb3b3b3)),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
