@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:horizontal_center_date_picker/datepicker_controller.dart';
+import 'package:knock/Political%20Dashboard/Team_Profile.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../Data Management/Data_Manage_Screen.dart';
@@ -150,7 +151,9 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
               ),
               SizedBox(height: 22),
               InkWell(
-                onTap: () {Get.to(() => Manage_Campaigns());},
+                onTap: () {
+                  Get.to(() => Manage_Campaigns());
+                },
                 child: Row(
                   children: [
                     SvgPicture.asset("assets/drawer compagins.svg"),
@@ -507,7 +510,9 @@ class _Cooperate_DashboardState extends State<Cooperate_Dashboard> {
               SvgPicture.asset("assets/Group 2292.svg"),
               SizedBox(height: 10),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => Team_Profile());
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     color: Color(0xfffafafa),
