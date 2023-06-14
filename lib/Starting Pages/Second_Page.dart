@@ -51,34 +51,52 @@ class Second_Page extends StatelessWidget {
             SizedBox(height: 25),
             Padding(
               padding: const EdgeInsets.only(left: 20),
-              child: Align(
-                alignment: Alignment.topLeft,
+              child: Align(alignment: Alignment.topLeft,
                 child: Text(
-                  "All Solutions on\nFingertips!",
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                  "Allowing Every campaign to be canvassed",
+                  style: TextStyle(fontSize: 15, color: Colors.black,fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 20),
-              child: Align(
-                alignment: Alignment.topLeft,
+              child: Align(alignment: Alignment.topLeft,
                 child: Text(
-                  "Deleniti consequuntur vitae nam. Illum libero\ntenetur quaerat quasi qui. Minima numquam neque.\nRem deserunt velit et asperiores hic. Eum\nex voluptatem nam nisi ut in. Molestiae qui\nsit animi natus dolores deleniti est\naperiam et.",
-                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  "Timely",
+                  style: TextStyle(fontSize: 15, color: Colors.black),
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 20),
-              child: Align(
-                  alignment: Alignment.topLeft,
-                  child: SvgPicture.asset("assets/Slider.svg")),
+              child: Align(alignment: Alignment.topLeft,
+                child: Text(
+                  "Efficient",
+                  style: TextStyle(fontSize: 15, color: Colors.black),
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Align(alignment: Alignment.topLeft,
+                child: Text(
+                  "Local",
+                  style: TextStyle(fontSize: 15, color: Colors.black),
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Align(alignment: Alignment.topLeft,
+                child: Text(
+                  "Transparent",
+                  style: TextStyle(fontSize: 15, color: Colors.black),
+                ),
+              ),
             ),
             SizedBox(height: 30),
             SizedBox(
@@ -86,8 +104,8 @@ class Second_Page extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (BuildContext context) {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
                       return Log_In();
                     }));
                   },

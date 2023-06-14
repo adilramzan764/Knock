@@ -42,7 +42,6 @@ dependencies:
   animated_horizontal_calendar: ^0.0.3
   syncfusion_flutter_charts: ^21.2.4
   pie_chart: ^5.3.2
-  google_maps_flutter: ^2.2.6
   flutter_sliding_up_panel: ^2.0.1
   flutter_rating_bar: ^4.0.1
 
