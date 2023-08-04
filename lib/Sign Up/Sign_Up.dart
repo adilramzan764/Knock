@@ -6,8 +6,14 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:knock/Log%20in/Log_In.dart';
 
+import '../ApiServices/ApiServiceForSignUp.dart';
+import '../Models/Mesage.dart';
+
 class Sign_Up extends StatefulWidget {
-  const Sign_Up({Key? key}) : super(key: key);
+  final String type;
+
+  const Sign_Up({Key? key, required this.type}) : super(key: key);
+
 
   @override
   State<Sign_Up> createState() => _Sign_UpState();
@@ -16,13 +22,14 @@ class Sign_Up extends StatefulWidget {
 class _Sign_UpState extends State<Sign_Up> {
   TextEditingController Name = TextEditingController();
   TextEditingController email = TextEditingController();
-  TextEditingController partyname = TextEditingController();
+  // TextEditingController partyname = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
-  List<bool> fieldError = [false, false, false, false, false];
+
 
   final _formKey = GlobalKey<FormState>();
 
+  String type2 = "";
   bool ischecked = false;
   bool ischecked1 = false;
   bool ischecked2 = false;
@@ -32,12 +39,14 @@ class _Sign_UpState extends State<Sign_Up> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
+
               SizedBox(height: 40),
               Center(
                 child: SvgPicture.asset("assets/orange vector.svg"),
@@ -141,6 +150,8 @@ class _Sign_UpState extends State<Sign_Up> {
                     ],
                     onChanged: (value) {
                       setState(() {
+                        type2 = value!;
+
                         isCheckboxEnabled = true;
                         isDropdownEnabled = false;
                         // Handle the selected value from the dropdown
@@ -388,7 +399,22 @@ class _Sign_UpState extends State<Sign_Up> {
                                 width: MediaQuery.of(context).size.width / 1.1,
                                 height: 50,
                                 child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      // Navigator.pop(context);
+                                      String messg = "";
+                                      print(Name.text);
+                                      print(email.text);
+                                      print(type2);
+                                      print('${widget.type}');
+                                      print(password.text);
+                                      ApiServicesforSignUp.signup(email.text, password.text, Name.text, '${widget.type}', "partyNamne").then((ahsan) => {
+                                        print("this is the response: ${ahsan.message}"),
+                                        Navigator.pop(context),
+
+                                        _dialogBuilder(context , ahsan )
+
+                                      });
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       primary: Color(0xffED7D2B),
                                       shape: RoundedRectangleBorder(
@@ -458,7 +484,7 @@ class _Sign_UpState extends State<Sign_Up> {
                           fontSize: 15,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -510,6 +536,38 @@ class _Sign_UpState extends State<Sign_Up> {
           ),
         ),
       ),
+    );
+  }
+  Future<void> _dialogBuilder(BuildContext context, UserResponse data) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Basic dialog title'),
+          content:  Text(
+            '${data.message ?? data.error}',
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Ok'),
+              onPressed: () {
+                if( data.message=="User Created"){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Log_In()),
+                );}
+                else{
+                  Navigator.pop(context);
+                }
+              },
+            ),
+
+          ],
+        );
+      },
     );
   }
 }

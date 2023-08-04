@@ -175,58 +175,12 @@ class Compaigns_Details extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "Host",
+                        "Canvasser",
                         style:
                             TextStyle(fontSize: 12, color: Color(0xfffb3b3b3)),
                       )
                     ],
                   )
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xfffafafa),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        height: 55,
-                        width: Get.width * 0.155,
-                        child: SvgPicture.asset(
-                          "assets/customer icon.svg",
-                          fit: BoxFit.scaleDown,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Abel, Jacob, John and 9+",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Customer",
-                            style: TextStyle(
-                                fontSize: 12, color: Color(0xfffb3b3b3)),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  InkWell(
-                      onTap: () {
-                        Get.to(() => Customer());
-                      },
-                      child: SvgPicture.asset("assets/arrow icon.svg"))
                 ],
               ),
               SizedBox(height: 15),
@@ -322,22 +276,8 @@ class Compaigns_Details extends StatelessWidget {
               ),
               SizedBox(height: 15),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 45,
-                    width: Get.width * 0.445,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            primary: Color(0xfff14336),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32))),
-                        child: Text(
-                          "Delete",
-                          style: TextStyle(fontSize: 15, color: Colors.white),
-                        )),
-                  ),
                   SizedBox(
                     height: 45,
                     width: Get.width * 0.445,

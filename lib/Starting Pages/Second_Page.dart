@@ -109,7 +109,7 @@ class Second_Page extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (BuildContext context) {
-                  return Sign_Up();
+                  return Log_In();
                 }));
               },
               child: Container(

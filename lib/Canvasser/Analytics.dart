@@ -1,4 +1,4 @@
-import 'package:animated_horizontal_calendar/animated_horizontal_calendar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -144,17 +144,7 @@ class _AnalyticsState extends State<Analytics> {
               SizedBox(height: 10),
               Container(
                 height: 120,
-                child: AnimatedHorizontalCalendar(
-                    tableCalenderIcon: Icon(
-                      Icons.calendar_today,
-                      color: Colors.white,
-                    ),
-                    date: DateTime.now(),
-                    textColor: Colors.black45,
-                    onDateSelected: (date) {
-                      var selectedDate = date;
-                      print(selectedDate);
-                    }),
+
               ),
               SizedBox(height: 10),
               Container(

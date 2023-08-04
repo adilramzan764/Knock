@@ -3,8 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class New_Compaings extends StatelessWidget {
-  const New_Compaings({Key? key}) : super(key: key);
+class New_Compaings extends StatefulWidget {
+  New_Compaings({Key? key}) : super(key: key);
+
+  @override
+  State<New_Compaings> createState() => _New_CompaingsState();
+}
+
+class _New_CompaingsState extends State<New_Compaings> {
+  List<String> questions = ['Question No 1:'];
 
   @override
   Widget build(BuildContext context) {
@@ -64,126 +71,6 @@ class New_Compaings extends StatelessWidget {
                   color: Color(0xfffafafa),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                height: 60,
-                width: Get.width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: DropdownButtonFormField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(top: 5)),
-                    icon: SvgPicture.asset("assets/drop down frame.svg"),
-                    value: "Host:",
-                    items: [
-                      DropdownMenuItem(
-                        value: "Host:",
-                        child: Text(
-                          "Host:",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Color(0xffb3b3b3),
-                          ),
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        child: Text(
-                          "Host:1",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xffb3b3b3)),
-                        ),
-                        value: "Host:1",
-                      ),
-                      DropdownMenuItem(
-                        child: Text(
-                          "Host:2",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xffb3b3b3)),
-                        ),
-                        value: "Host:2",
-                      ),
-                    ],
-                    onChanged: (value) {
-                      print("changed");
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                height: 60,
-                width: Get.width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: DropdownButtonFormField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(top: 5)),
-                    icon: SvgPicture.asset("assets/drop down frame.svg"),
-                    value: "Campaign Type:",
-                    items: [
-                      DropdownMenuItem(
-                        value: "Campaign Type:",
-                        child: Text(
-                          "Campaign Type:",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Color(0xffb3b3b3),
-                          ),
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        child: Text(
-                          "Campaign Type:1",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xffb3b3b3)),
-                        ),
-                        value: "Campaign Type:1",
-                      ),
-                      DropdownMenuItem(
-                        child: Text(
-                          "Campaign Type:2",
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xffb3b3b3)),
-                        ),
-                        value: "Campaign Type:2",
-                      ),
-                    ],
-                    onChanged: (value) {
-                      print("changed");
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                height: 60,
-                width: Get.width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 8),
-                        border: InputBorder.none,
-                        hintText: "Customer Name:",
-                        hintStyle:
-                            TextStyle(fontSize: 15, color: Color(0xffb3b3b3))),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
                 height: Get.height * 0.220,
                 width: Get.width,
                 child: Column(
@@ -219,8 +106,6 @@ class New_Compaings extends StatelessWidget {
                 width: Get.width,
                 color: Color(0xffefefef),
               ),
-              SizedBox(height: 10),
-              SvgPicture.asset("assets/Group 2374.svg"),
               SizedBox(height: 15),
               Container(
                 decoration: BoxDecoration(
@@ -413,6 +298,69 @@ class New_Compaings extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("Add Questions",style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+                ],
+              ),
+              SizedBox(height: 10),
+              Container(
+
+                height: Get.height * 0.200,
+                width: Get.width,
+                child: ListView.builder(
+                  itemCount: questions.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: Color(0xfffafafa),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: TextFormField(
+                        maxLines: 5,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(left: 15, top: 10),
+                          border: InputBorder.none,
+                          hintText: questions[index],
+                          hintStyle: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 40,
+                width: 200,
+                child: ElevatedButton(
+                  onPressed: () async{
+                    // Add a new question when the button is pressed
+                    setState(() {
+                      int newQuestionNumber = questions.length + 1;
+                      questions.add("Question No $newQuestionNumber:");
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xffed7d2b),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                  ),
+                  child: Text(
+                    "Add Question",
+                    style: TextStyle(fontSize: 17, color: Colors.white),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 30),
               SizedBox(height: 30),
               SizedBox(
                 height: 50,

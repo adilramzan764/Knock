@@ -5,13 +5,29 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:knock/Canvasser/Canvasser_Customer.dart';
 import 'package:knock/Canvasser/Walk_Sheet.dart';
 import 'package:knock/Canvasser/District.dart';
+import 'package:knock/Log%20in/Log_In.dart';
+import 'package:knock/Models/LogoutModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../ApiServices/Logout_Api.dart';
+import '../Data Management/Data_Manage_Screen.dart';
+import '../District Map/Map.dart';
 import '../Notification/Political_Notification.dart';
+import '../Political Dashboard/Manage_Campaigns.dart';
 import '../Setting/Set_Screen.dart';
 import 'Canvasser_Compaigns.dart';
 
 class Canvasser_Home extends StatelessWidget {
   const Canvasser_Home({Key? key}) : super(key: key);
+  void _logout(BuildContext context) async {
+    await _saveLoggedIn(false);
 
+
+  }
+
+  Future<void> _saveLoggedIn(bool value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', value);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,15 +38,7 @@ class Canvasser_Home extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              SizedBox(height: 40),
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: InkWell(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: SvgPicture.asset("assets/drawer cross.svg"))),
-              SizedBox(height: 30),
+              SizedBox(height: 50),
               Row(
                 children: [
                   Container(
@@ -48,14 +56,14 @@ class Canvasser_Home extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Terri Cartwright",
+                        "Michael Turcotte",
                         style: TextStyle(
                             fontSize: 19,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "Lead Canvasser",
+                        "Admin",
                         style: TextStyle(fontSize: 15, color: Colors.black),
                       ),
                     ],
@@ -78,68 +86,39 @@ class Canvasser_Home extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 30),
               InkWell(
                 onTap: () {
-                  Get.to(() => District());
+                  Get.to(() => MapScreen());
                 },
                 child: Row(
                   children: [
                     SvgPicture.asset("assets/drawer map.svg"),
                     SizedBox(width: 8),
                     Text(
-                      "District Map",
+                      "Map",
                       style: TextStyle(fontSize: 15, color: Colors.black),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 30),
               InkWell(
                 onTap: () {
-                  Get.to(() => Canvasser_Compaigns());
+                  Get.to(() => Manage_Campaigns());
                 },
                 child: Row(
                   children: [
                     SvgPicture.asset("assets/drawer compagins.svg"),
                     SizedBox(width: 8),
                     Text(
-                      "Campaigns",
+                      "All Campaigns",
                       style: TextStyle(fontSize: 15, color: Colors.black),
-                    ),
+                    )
                   ],
                 ),
               ),
-              SizedBox(height: 22),
-              InkWell(onTap: (){Get.to(() => Walk_Sheet());},
-                child: Row(
-                  children: [
-                    SvgPicture.asset("assets/drawer hustory.svg"),
-                    SizedBox(width: 8),
-                    Text(
-                      "Walk Sheet",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 22),
-              InkWell(
-                onTap: () {
-                  Get.to(() => Canvasser_Customer());
-                },
-                child: Row(
-                  children: [
-                    SvgPicture.asset("assets/customer icon.svg"),
-                    SizedBox(width: 8),
-                    Text(
-                      "Customers List",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 22),
+              SizedBox(height: 30),
               InkWell(
                 onTap: () {
                   Get.to(() => Set_Screen());
@@ -151,22 +130,32 @@ class Canvasser_Home extends StatelessWidget {
                     Text(
                       "Setting",
                       style: TextStyle(fontSize: 15, color: Colors.black),
-                    ),
+                    )
                   ],
                 ),
               ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 15),
-                child: Row(
-                  children: [
-                    SvgPicture.asset("assets/drawer logout.svg"),
-                    SizedBox(width: 8),
-                    Text(
-                      "Log Out",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
-                    ),
-                  ],
+              SizedBox(height: 30),
+              InkWell(
+                onTap: () async {
+                  _logout(context);
+                  ApiServiceLogout.logout().then((ahsan) {
+                    print("this is the response: ${ahsan.message}");
+                    _dialogBuilder(context, ahsan);
+                  });
+
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset("assets/drawer logout.svg"),
+                      SizedBox(width: 8),
+                      Text(
+                        "Log Out",
+                        style: TextStyle(fontSize: 15, color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -189,7 +178,7 @@ class Canvasser_Home extends StatelessWidget {
                         },
                         child: SvgPicture.asset("assets/Drawer.svg"));
                   }),
-                  Text("Cooperate Dashboard",
+                  Text("Canvasser Dashboard",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.black,
@@ -220,65 +209,35 @@ class Canvasser_Home extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
+              Row(children: [
+                Expanded(
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          primary: Color(0xffed7d2b),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32))),
+                      child: Text(
+                        "Active Campaigns",
+                        style: TextStyle(fontSize: 13, color: Colors.white),
+                      )),
                 ),
-                height: 50,
-                width: Get.width * 0.9,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      prefixIcon: SvgPicture.asset(
-                        "assets/Search.svg",
-                        fit: BoxFit.scaleDown,
-                      ),
-                      hintText: "Search here",
-                      hintStyle:
-                          TextStyle(fontSize: 17, color: Color(0xffafafaf))),
+                SizedBox(
+                  width: 10,
                 ),
-              ),
-              SizedBox(height: 10),
-              SvgPicture.asset("assets/canvasser map.svg"),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Available Campaigns:",
-                        style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                      SizedBox(width: 5),
-                      Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xff22407a),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          height: 18,
-                          width: 18,
-                          child: Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                          )),
-                    ],
-                  ),
-                  Text(
-                    "View All",
-                    style: TextStyle(fontSize: 14, color: Color(0xffed7d2b)),
-                  ),
-                ],
-              ),
+                Expanded(
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          primary: Color(0xffed7d2b),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32))),
+                      child: Text(
+                        "Completed Campaigns",
+                        style: TextStyle(fontSize: 13, color: Colors.white),
+                      )),
+                ),
+              ]),
               SizedBox(height: 15),
               Container(
                 decoration: BoxDecoration(
@@ -504,451 +463,49 @@ class Canvasser_Home extends StatelessWidget {
                 color: Color(0xffefefef),
               ),
               SizedBox(height: 15),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "New Route:",
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xffed7d2b),
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            height: 20,
-                            width: 20,
-                            child: Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                              ),
-                            )),
-                        Container(
-                          width: Get.width * 0.003,
-                          height: 50,
-                          color: Color(0xffb3b3b3),
-                        ),
-                        Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xff14b15c),
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            height: 20,
-                            width: 20,
-                            child: Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                              ),
-                            )),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Color(0xffb3b3b3), width: 1),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          height: 45,
-                          width: Get.width * 0.8,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.only(left: 10, bottom: 5),
-                                border: InputBorder.none,
-                                hintText: "1023 Rice Brook Park, New York",
-                                hintStyle: TextStyle(
-                                    fontSize: 15, color: Colors.black)),
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                        Container(
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Color(0xffb3b3b3), width: 1),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          height: 45,
-                          width: Get.width * 0.8,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.only(left: 10, bottom: 5),
-                                border: InputBorder.none,
-                                hintText: "143 Rogers Kittery, New York",
-                                hintStyle: TextStyle(
-                                    fontSize: 15, color: Colors.black)),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Canvassing to:",
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/Jacqueline-Fernandez.jpg"),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    height: 55,
-                    width: Get.width * 0.155,
-                  ),
-                  SizedBox(width: 10),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Ernest Barton",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        "Customer",
-                        style:
-                            TextStyle(fontSize: 12, color: Color(0xfffb3b3b3)),
-                      )
-                    ],
-                  )
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    height: 45,
-                    width: Get.width * 0.445,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            primary: Color(0xfff14336),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15))),
-                        child: Text(
-                          "Decline",
-                          style: TextStyle(fontSize: 15, color: Colors.white),
-                        )),
-                  ),
-                  SizedBox(
-                    height: 45,
-                    width: Get.width * 0.445,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            primary: Color(0xffed7d2b),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15))),
-                        child: Text(
-                          "Accept",
-                          style: TextStyle(fontSize: 15, color: Colors.white),
-                        )),
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
-              Container(
-                height: 0.5,
-                width: Get.width,
-                color: Color(0xffefefef),
-              ),
-              SizedBox(height: 15),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                height: 130,
-                width: Get.width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xffed7d2b),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              height: 20,
-                              width: 20,
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                              )),
-                          SizedBox(width: 10),
-                          Text(
-                            "3125 Cordelia Ridge",
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xff323437)),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xff14b15c),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              height: 20,
-                              width: 20,
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                              )),
-                          SizedBox(width: 10),
-                          Text(
-                            "261 Viviane Shores",
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xff323437)),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        "To Customer:",
-                        style:
-                            TextStyle(fontSize: 12, color: Color(0xffb3b3b3)),
-                      ),
-                      Text(
-                        "Merle McGlynn",
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                height: 130,
-                width: Get.width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xffed7d2b),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              height: 20,
-                              width: 20,
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                              )),
-                          SizedBox(width: 10),
-                          Text(
-                            "60701 Maxime Meadow",
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xff323437)),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xff14b15c),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              height: 20,
-                              width: 20,
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                              )),
-                          SizedBox(width: 10),
-                          Text(
-                            "3455 Gerlach Manor",
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xff323437)),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        "To Customer:",
-                        style:
-                            TextStyle(fontSize: 12, color: Color(0xffb3b3b3)),
-                      ),
-                      Text(
-                        "Leslie Bartoletti",
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                height: 130,
-                width: Get.width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xffed7d2b),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              height: 20,
-                              width: 20,
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                              )),
-                          SizedBox(width: 10),
-                          Text(
-                            "543 Henry Park",
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xff323437)),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xff14b15c),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              height: 20,
-                              width: 20,
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                              )),
-                          SizedBox(width: 10),
-                          Text(
-                            "1214 Morissette Freeway",
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xff323437)),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        "To Customer:",
-                        style:
-                            TextStyle(fontSize: 12, color: Color(0xffb3b3b3)),
-                      ),
-                      Text(
-                        "Vincent Feeney Sr.",
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
-              ),
               SizedBox(height: 10),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> _dialogBuilder(BuildContext context, UserResponseLogout data) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Response'),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (data.message != null) Text(' ${data.message}'),
+
+              // Text('LogIn Successful'),
+
+              // Add more user properties as needed
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.headline6,
+              ),
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Log_In()),
+                  (Route<dynamic> route) => false,
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
