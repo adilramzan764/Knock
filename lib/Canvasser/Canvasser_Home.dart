@@ -270,6 +270,7 @@ class Canvasser_Home extends StatelessWidget {
                                 ),
                               )),
                           SizedBox(width: 10),
+                          
                           Text(
                             "0025 Kuvalis Landing",
                             style: TextStyle(
