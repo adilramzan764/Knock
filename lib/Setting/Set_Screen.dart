@@ -324,11 +324,15 @@ class Set_Screen extends StatelessWidget {
                         DeleteAccount_ApiService.delaccount().then((ahsan) {
                           // print("this is the id: ${ahsan.user!.id}");
                           Navigator.pop(context);
-                          deletiondone(context, ahsan);
+                          deletiondone(context,ahsan);
                           // _login(context,ahsan.user!.id.toString());
                         }
 
-                        );},
+                        );
+
+
+
+                      },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xffED7D2B), // Use your desired color
                       ),
@@ -358,19 +362,18 @@ class Set_Screen extends StatelessWidget {
           data.user!=null?
           Text('${data.error}') : const Text('Account Deleted Successfully') ,
           actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Log_In()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.grey, // Use your desired color
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child:  ElevatedButton(
+                  onPressed: () {
+
+                    },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xffED7D2B), // Use your desired color
+                  ),
+                  child: Text('OK'),
                 ),
-                child: Text('OK'),
               ),
             ),
           ],

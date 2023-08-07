@@ -12,8 +12,11 @@ import 'package:knock/Political%20Dashboard/Team_Members.dart';
 import 'package:knock/Political%20Dashboard/Team_Profile.dart';
 import 'package:knock/Setting/Set_Screen.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../ApiServices/Logout_Api.dart';
+import '../MyDialog.dart';
 import 'Manage_Campaigns.dart';
 
 class Political extends StatefulWidget {
@@ -66,6 +69,17 @@ class _PoliticalState extends State<Political> {
       default:
         return 0;
     }
+  }
+
+  void _logout(BuildContext context) async {
+    await _saveLoggedIn(false);
+
+
+  }
+
+  Future<void> _saveLoggedIn(bool value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', value);
   }
 
   @override
@@ -191,17 +205,22 @@ class _PoliticalState extends State<Political> {
                 ),
               ),
               SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 15),
-                child: Row(
-                  children: [
-                    SvgPicture.asset("assets/drawer logout.svg"),
-                    SizedBox(width: 8),
-                    Text(
-                      "Log Out",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
-                    )
-                  ],
+              InkWell(
+                onTap: (){
+                  LogoutDialog.showResponseDialog(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset("assets/drawer logout.svg"),
+                      SizedBox(width: 8),
+                      Text(
+                        "Log Out",
+                        style: TextStyle(fontSize: 15, color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

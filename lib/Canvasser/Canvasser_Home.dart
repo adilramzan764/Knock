@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../ApiServices/Logout_Api.dart';
 import '../Data Management/Data_Manage_Screen.dart';
 import '../District Map/Map.dart';
+import '../MyDialog.dart';
 import '../Notification/Political_Notification.dart';
 import '../Political Dashboard/Manage_Campaigns.dart';
 import '../Setting/Set_Screen.dart';
@@ -18,16 +19,7 @@ import 'Canvasser_Compaigns.dart';
 
 class Canvasser_Home extends StatelessWidget {
   const Canvasser_Home({Key? key}) : super(key: key);
-  void _logout(BuildContext context) async {
-    await _saveLoggedIn(false);
 
-
-  }
-
-  Future<void> _saveLoggedIn(bool value) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isLoggedIn', value);
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,11 +129,7 @@ class Canvasser_Home extends StatelessWidget {
               SizedBox(height: 30),
               InkWell(
                 onTap: () async {
-                  _logout(context);
-                  ApiServiceLogout.logout().then((ahsan) {
-                    print("this is the response: ${ahsan.message}");
-                    _dialogBuilder(context, ahsan);
-                  });
+                  LogoutDialog.showResponseDialog(context);
 
                 },
                 child: Padding(
@@ -472,41 +460,4 @@ class Canvasser_Home extends StatelessWidget {
     );
   }
 
-  Future<void> _dialogBuilder(BuildContext context, UserResponseLogout data) {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Response'),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (data.message != null) Text(' ${data.message}'),
-
-              // Text('LogIn Successful'),
-
-              // Add more user properties as needed
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.headline6,
-              ),
-              child: const Text('Ok'),
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => Log_In()),
-                  (Route<dynamic> route) => false,
-                );
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 }

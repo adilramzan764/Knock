@@ -6,7 +6,7 @@ import '../Models/LoginModel.dart';
 import '../const.dart';
 // import '../path_to_user_response_login.dart'; // Import the correct path for your model
 
-class ApiServiceLogout {
+class LogoutApi {
   static Future<UserResponseLogout> logout() async {
     const String URL = "${baseUrl}logout"; // Replace 'baseUrl' with your actual base URL.
 

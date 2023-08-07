@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../ApiServices/Logout_Api.dart';
 import '../Log in/Log_In.dart';
 import '../Models/LogoutModel.dart';
+import '../MyDialog.dart';
 import '../Political Dashboard/Manage_Campaigns.dart';
 
 class Cooperate_Dashboard extends StatefulWidget {
@@ -200,11 +201,7 @@ class _PoliticalState extends State<Cooperate_Dashboard> {
               SizedBox(height: 30),
               InkWell(
                 onTap: (){
-                  _logout(context);
-                  ApiServiceLogout.logout().then((ahsan) {
-                    print("this is the response: ${ahsan.message}");
-                    _dialogBuilder(context, ahsan);
-                  });
+                  LogoutDialog.showResponseDialog(context);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 15),

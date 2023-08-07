@@ -124,7 +124,7 @@ class _Log_InState extends State<Log_In> {
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Please type of account you want Sign Up for.",
+                      "Please type of account you want SignIn for.",
                       style: TextStyle(
                         fontSize: 15,
                         color: Color(0xffb3b3b3),
@@ -137,9 +137,16 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+                      await prefs.setString("accounttype", 'Canvasser');
                       print(1);
-                      Get.to(() => BottomBarPage(check: 1,));
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (BuildContext context) => BottomBarPage(check: 1)),
+                            (Route<dynamic> route) => false,
+                      );
                       // Perform th desired action for the "Canvasser" button
                     },
                     style: ElevatedButton.styleFrom(
@@ -168,8 +175,15 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(() => BottomBarPage(check: 0));
+                    onPressed: () async {
+                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+                      await prefs.setString("accounttype", 'Political Campaigns');
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (BuildContext context) => BottomBarPage(check: 0)),
+                            (Route<dynamic> route) => false,
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xffED7D2B),
@@ -197,8 +211,15 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(() => BottomBarPage(check: 2));
+                    onPressed: () async {
+                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+                      await prefs.setString("accounttype", 'Cooperate Account');
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (BuildContext context) => BottomBarPage(check: 2)),
+                            (Route<dynamic> route) => false,
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xffED7D2B),
@@ -309,10 +330,8 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    onPressed: ()  {
 
-                      await prefs.setString("accounttype", 'Canvasser');
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Sign_Up(type: 'Canvasser',)),
@@ -345,10 +364,8 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    onPressed: () {
 
-                      await prefs.setString("accounttype", 'Political Campaigns');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -382,10 +399,8 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    onPressed: ()  {
 
-                      await prefs.setString("accounttype", 'Cooperate Account');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
