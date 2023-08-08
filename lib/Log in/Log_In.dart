@@ -45,6 +45,8 @@ class _Log_InState extends State<Log_In> {
   TextEditingController password = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
+   String _apiErrorMessage=" "; // Declare API error message
+
   bool _showError = false;
   bool _showpass = false;
 
@@ -498,13 +500,17 @@ class _Log_InState extends State<Log_In> {
                       },
                     ),
                   ),
-                  if (_showError)
+                  if (_apiErrorMessage=="Inavalid username or password")
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Text(
-                        _validateInput(password.text) ?? '',
-                        style: TextStyle(
-                          color: Colors.red,
+                      padding: const EdgeInsets.only(top: 8.0,left: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          _apiErrorMessage ??" ",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                     ),
@@ -552,16 +558,20 @@ class _Log_InState extends State<Log_In> {
                     ),
                   ),
                   // ),
-                  if (_showError)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                  if(_apiErrorMessage!="null")
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0,left: 20),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
                       child: Text(
-                        _validateInput(password.text) ?? '',
+                        _apiErrorMessage ??" ",
                         style: TextStyle(
+                          fontSize: 12,
                           color: Colors.red,
                         ),
                       ),
                     ),
+                  ),
                 ],
               ),
             ),
@@ -585,14 +595,35 @@ class _Log_InState extends State<Log_In> {
 
 
 
-                    ApiServicesForLogIn.login(email.text, password.text)
-                        .then((ahsan) {
-                      // print("this is the id: ${ahsan.user!.id}");
-                      _dialogBuilder(context, ahsan);
-                      _login(context,ahsan.user!.id.toString());
-                    }).catchError((error) {
+                    try {
+                      var ahsan = await ApiServicesForLogIn.login(
+                        email.text,
+                        password.text,
+                      );
+
+                      if (ahsan.error != null) {
+                        setState(() {
+                          _apiErrorMessage = ahsan.error.toString();
+                        });
+                        print("error is: $_apiErrorMessage");
+                        // print("message is: ${ahsan.message.toString()}");
+                      } else {
+                        setState(() {
+                          _apiErrorMessage = ahsan.message.toString();
+                        });
+                        print("message is: $_apiErrorMessage");
+                      }
+
+
+                      if (ahsan.user != null && ahsan.token != null) {
+                        _login(context, ahsan.user!.id.toString());
+                        print(ahsan.user!.id);
+
+                        _submitForm(context);
+                      }
+                    } catch (error) {
                       print("Error occurred: $error");
-                    });
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Color(0xffED7D2B),
@@ -712,49 +743,5 @@ class _Log_InState extends State<Log_In> {
     );
   }
 
-  Future<void> _dialogBuilder(BuildContext context, UserResponseLogin data) {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),),
-          child: AlertDialog(
-            // title: const Text('Response'),
-            content: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (data.message != null) Text('Message: ${data.message}'),
-                if (data.error != null) Text('Error: ${data.error}'),
-                if (data.user != null && data.token != null)
-                  Text('LogIn Successful'),
-
-
-
-                // Add more user properties as needed
-                ],
-
-
-            ),
-            actions: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.headline6,
-                ),
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  if (data.user != null && data.token != null)
-                  _submitForm(context);
-                },
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
 
 }

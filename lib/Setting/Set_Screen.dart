@@ -367,6 +367,11 @@ class Set_Screen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child:  ElevatedButton(
                   onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (BuildContext context) => Log_In()),
+                          (Route<dynamic> route) => false,
+                    );
 
                     },
                   style: ElevatedButton.styleFrom(

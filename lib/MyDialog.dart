@@ -106,5 +106,52 @@ class LogoutDialog {
       },
     );
   }
+// Future<void> _dialogBuilder(BuildContext context, UserResponseLogin data) {
+//   return showDialog<void>(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return Container(
+//
+//         decoration: BoxDecoration(
+//             borderRadius: BorderRadius.circular(20),),
+//         child: AlertDialog(
+//           // title: const Text('Response'),
+//           content: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             mainAxisSize: MainAxisSize.min,
+//             children: [
+//               if (data.message != null) Text('Message: ${data.message}'),
+//               if (data.error != null) Text('Error: ${data.error}'),
+//               if (data.user != null && data.token != null)
+//                 Text('LogIn Successful'),
+//
+//
+//
+//               // Add more user properties as needed
+//               ],
+//
+//
+//           ),
+//           actions: <Widget>[
+//             TextButton(
+//               style: TextButton.styleFrom(
+//                 textStyle: Theme.of(context).textTheme.headline6,
+//               ),
+//               child: const Text('OK'),
+//               onPressed: () {
+//                 Navigator.of(context).pop();
+//                 if (data.user != null && data.token != null)
+//                 _submitForm(context);
+//               },
+//             ),
+//           ],
+//         ),
+//       );
+//     },
+//   );
+// }
+
+
+
 }
 
