@@ -1,29 +1,40 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ApiServices/Logout_Api.dart';
 import 'Log in/Log_In.dart';
 
-
 class LogoutDialog {
- static void _logout(BuildContext context) async {
+  static void _logout(BuildContext context) async {
     await _saveLoggedIn(false);
-
-
-
   }
 
- static  Future<void> _saveLoggedIn(bool value) async {
+  static Future<void> _saveLoggedIn(bool value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isLoggedIn', value);
     prefs.clear();
   }
+
+  static Future<void> _startLoading(BuildContext context) async {
+    // _timer?.cancel();
+    await EasyLoading.show(
+      status: 'loging out..',
+      maskType: EasyLoadingMaskType.black,
+    );
+    await Future.delayed(Duration(seconds: 2));
+    await EasyLoading.dismiss().then((value) => Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => Log_In()),
+          (Route<dynamic> route) => false,
+        ));
+
+    print('EasyLoading show');
+  }
+
   static void showResponseDialog(BuildContext context) {
-
     showDialog<void>(
-
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -34,17 +45,15 @@ class LogoutDialog {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-
-
               Row(
                 children: [
                   SvgPicture.asset("assets/drawer logout.svg"),
-                  SizedBox(width: 10,),
-
+                  SizedBox(
+                    width: 10,
+                  ),
                   Text("Are you sure you want to logout?"),
                 ],
               ),
-
 
               // Text('LogIn Successful'),
 
@@ -52,7 +61,6 @@ class LogoutDialog {
             ],
           ),
           actions: <Widget>[
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: Row(
@@ -60,34 +68,31 @@ class LogoutDialog {
                 children: [
                   Expanded(
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(true); // Confirm the action
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.grey, // Use your desired color
-                        ),
-                        child: Text('Cancel'),
-                      )
+                    onPressed: () {
+                      Navigator.of(context).pop(true); // Confirm the action
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.grey, // Use your desired color
+                    ),
+                    child: Text('Cancel'),
+                  )),
+                  SizedBox(
+                    width: 15,
                   ),
-                  SizedBox(width: 15,),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
                         _logout(context);
 
                         LogoutApi.logout().then((data) {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (BuildContext context) => Log_In()),
-                                (Route<dynamic> route) => false,
-                          );
+                          // Navigator.pop(context);
+                          _startLoading(context);
+
                           if (data.message != null) {
-                            print(data.message); // Print the message to the console
+                            print(data
+                                .message); // Print the message to the console
                           }
-
                         });
-
-
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xffED7D2B), // Use your desired color
@@ -95,10 +100,8 @@ class LogoutDialog {
                       child: Text('Logout'),
                     ),
                   ),
-
                 ],
               ),
-
             ),
             // SizedBox(height: 30,)
           ],
@@ -150,8 +153,4 @@ class LogoutDialog {
 //     },
 //   );
 // }
-
-
-
 }
-
