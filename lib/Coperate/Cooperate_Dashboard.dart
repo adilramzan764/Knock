@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../ApiServices/Logout_Api.dart';
 import '../Log in/Log_In.dart';
 import '../Models/LogoutModel.dart';
-import '../MyDialog.dart';
+import '../Logout_Dialog.dart';
 import '../Political Dashboard/Manage_Campaigns.dart';
 
 class Cooperate_Dashboard extends StatefulWidget {

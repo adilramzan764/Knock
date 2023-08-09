@@ -16,7 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../ApiServices/Logout_Api.dart';
-import '../MyDialog.dart';
+import '../Logout_Dialog.dart';
 import 'Manage_Campaigns.dart';
 
 class Political extends StatefulWidget {

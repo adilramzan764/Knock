@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:knock/Log%20in/Log_In.dart';
 import 'package:knock/Sign%20Up/Sign_Up.dart';
 
+import '../loader2.dart';
+
 class Second_Page extends StatelessWidget {
   const Second_Page({Key? key}) : super(key: key);
 
@@ -109,7 +111,7 @@ class Second_Page extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (BuildContext context) {
-                  return Log_In();
+                  return MyHomePage();
                 }));
               },
               child: Container(

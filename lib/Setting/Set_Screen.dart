@@ -1,14 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:knock/ApiServices/DeleteAccount_ApiService.dart';
 import 'package:knock/Log%20in/Log_In.dart';
-import 'package:knock/Models/DeleteUserModel.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Set_Screen extends StatelessWidget {
   const Set_Screen({Key? key}) : super(key: key);
+
+  static Future<void> _startLoading(BuildContext context) async {
+    // _timer?.cancel();
+    await EasyLoading.show(
+      status: 'Deleting..',
+      maskType: EasyLoadingMaskType.black,
+    );
+    await Future.delayed(Duration(seconds: 2));
+    await EasyLoading.dismiss().then((value) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (BuildContext context) => Log_In()),
+            (Route<dynamic> route) => false,
+      );
+      Get.snackbar(
+        'Account Deleted',
+        'Your account has been deleted successfully.',
+        snackPosition: SnackPosition.TOP,
+        borderRadius: 20,
+        backgroundColor: Colors.black12,
+        duration: Duration(seconds: 3),
+        margin: EdgeInsets.only(top: 8.0, left: 10, right: 10),
+        icon: Icon(Icons.person, color: Colors.grey),
+        shouldIconPulse: false,
+        dismissDirection: DismissDirection.horizontal,
+        forwardAnimationCurve: Curves.bounceInOut,
+      );
+    });
+
+
+    print('EasyLoading show');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -255,6 +287,9 @@ class Set_Screen extends StatelessWidget {
               InkWell(
                 onTap: (){
                   _dialogBuilder(context);
+
+
+
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -322,13 +357,16 @@ class Set_Screen extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         DeleteAccount_ApiService.delaccount().then((ahsan) {
-                          // print("this is the id: ${ahsan.user!.id}");
-                          Navigator.pop(context);
-                          deletiondone(context,ahsan);
+                          print("this is the id: ${ahsan.user}");
+                          // Navigator.pop(context);
+                          _startLoading(context);
+                          // deletiondone(context,ahsan);
                           // _login(context,ahsan.user!.id.toString());
                         }
-
                         );
+
+                        // _startLoading(context);
+
 
 
 
@@ -349,7 +387,9 @@ class Set_Screen extends StatelessWidget {
     );
   }
 
-  Future<void> deletiondone(BuildContext context,DeleteUserModel data) {
+  Future<void> deletiondone(BuildContext context,
+      // DeleteUserModel data
+      ) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -359,8 +399,9 @@ class Set_Screen extends StatelessWidget {
           ),
 
           content:
-          data.user!=null?
-          Text('${data.error}') : const Text('Account Deleted Successfully') ,
+          // data.user!=null?
+          // Text('${data.error}') : const
+          Text('Account Deleted Successfully') ,
           actions: <Widget>[
             Center(
               child: Padding(

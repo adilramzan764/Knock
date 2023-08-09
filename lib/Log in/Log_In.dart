@@ -1,17 +1,13 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:knock/ApiServices/ApiServicesForLogIn.dart';
-
 import 'package:knock/Sign%20Up/Sign_Up.dart';
 import 'package:knock/Terms%20%20Conditions/Terms_Conditions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../BottomBar/BottomNavBar.dart';
-import '../Models/LoginModel.dart';
-
-
-
 
 
 class Log_In extends StatefulWidget {
@@ -23,29 +19,46 @@ class Log_In extends StatefulWidget {
 
 class _Log_InState extends State<Log_In> {
 
-  //Shared Prefrence
-  // static const String _loggedInKey = 'isLoggedIn';
+
+  bool isLoading = false;
 
 
-  void _login(BuildContext context,String id) async {
-    // Simulate a successful login
-    await _saveLoggedIn(id);
 
+  Future<void> _startLoading(int index) async {
+    // _timer?.cancel();
+    await EasyLoading.show(
+      status: 'loging in..',
+      maskType: EasyLoadingMaskType.black,
+    );
+    await Future.delayed(Duration(seconds: 2));
+    await EasyLoading.dismiss().then((value) => Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => BottomBarPage(check: index)),
+          (Route<dynamic> route) => false,
+        ));
+
+    print('EasyLoading show');
   }
 
+
+
+  void _login(BuildContext context, String id) async {
+    // Simulate a successful login
+    await _saveLoggedIn(id);
+  }
 
   Future<void> _saveLoggedIn(String id) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isLoggedIn', true);
     await prefs.setString("id", id);
-
   }
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-   String _apiErrorMessage=" "; // Declare API error message
+  String _apiErrorMessage = " "; // Declare API error message
 
   bool _showError = false;
   bool _showpass = false;
@@ -139,18 +152,16 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    onPressed: isLoading
+                        ? null
+                        : () async {
+                            final SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
 
-                      await prefs.setString("accounttype", 'Canvasser');
-                      print(1);
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (BuildContext context) => BottomBarPage(check: 1)),
-                            (Route<dynamic> route) => false,
-                      );
-                      // Perform th desired action for the "Canvasser" button
-                    },
+                            await prefs.setString("accounttype", 'Canvasser');
+
+                            _startLoading(1);
+                          },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xffED7D2B),
                       shape: RoundedRectangleBorder(
@@ -167,7 +178,13 @@ class _Log_InState extends State<Log_In> {
                             color: Colors.white,
                           ),
                         ),
-                        SvgPicture.asset("assets/forward arrow.svg"),
+                        if (isLoading)
+                          SpinKitCircle(
+                            color: Colors.white,
+                            size: 20.0,
+                          )
+                        else
+                          SvgPicture.asset("assets/forward arrow.svg"),
                       ],
                     ),
                   ),
@@ -177,15 +194,15 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    onPressed: isLoading
+                        ? null
+                        : () async {
+                      final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
 
                       await prefs.setString("accounttype", 'Political Campaigns');
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (BuildContext context) => BottomBarPage(check: 0)),
-                            (Route<dynamic> route) => false,
-                      );
+
+                      _startLoading(0);
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xffED7D2B),
@@ -213,15 +230,15 @@ class _Log_InState extends State<Log_In> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    onPressed: isLoading
+                        ? null
+                        : () async {
+                      final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
 
                       await prefs.setString("accounttype", 'Cooperate Account');
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (BuildContext context) => BottomBarPage(check: 2)),
-                            (Route<dynamic> route) => false,
-                      );
+
+                      _startLoading(2);
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xffED7D2B),
@@ -257,190 +274,192 @@ class _Log_InState extends State<Log_In> {
       print("false");
     }
   }
-  void _signupForm(BuildContext context) {
 
-      showModalBottomSheet(
-        context: context,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
+  void _signupForm(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
-        builder: (BuildContext context) {
-          return Container(
-            height: 360,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          height: 360,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-            child: Column(
-              children: [
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+          ),
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Choose account\nfor Signup.",
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xfffef2ea),
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        height: 50,
+                        width: 50,
+                        child: SvgPicture.asset(
+                          "assets/cross.svg",
+                          fit: BoxFit.scaleDown,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Please type of account you want Sign Up for.",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color(0xffb3b3b3),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Sign_Up(
+                                type: 'Canvasser',
+                              )),
+                    );
+                    // Perform th desired action for the "Canvasser" button
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xffED7D2B),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Choose account\nfor Signup.",
+                        "Canvasser",
                         style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                          color: Colors.white,
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xfffef2ea),
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          height: 50,
-                          width: 50,
-                          child: SvgPicture.asset(
-                            "assets/cross.svg",
-                            fit: BoxFit.scaleDown,
-                          ),
-                        ),
-                      ),
+                      SvgPicture.asset("assets/forward arrow.svg"),
                     ],
                   ),
                 ),
-                SizedBox(height: 15),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Please type of account you want Sign Up for.",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xffb3b3b3),
+              ),
+              SizedBox(height: 15),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Sign_Up(
+                            type:
+                                'Political Campaigns'), // Replace with the desired type
                       ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xffED7D2B),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
                     ),
                   ),
-                ),
-                SizedBox(height: 20),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: ()  {
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Sign_Up(type: 'Canvasser',)),
-                      );
-                      // Perform th desired action for the "Canvasser" button
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xffED7D2B),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Canvasser",
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                          ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Political Campaigns",
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.white,
                         ),
-                        SvgPicture.asset("assets/forward arrow.svg"),
-                      ],
-                    ),
+                      ),
+                      SvgPicture.asset("assets/forward arrow.svg"),
+                    ],
                   ),
                 ),
-                SizedBox(height: 15),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Sign_Up(type: 'Political Campaigns'), // Replace with the desired type
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xffED7D2B),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32),
+              ),
+              SizedBox(height: 15),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Sign_Up(
+                            type:
+                                'Cooperate Account'), // Replace with the desired type
                       ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Political Campaigns",
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SvgPicture.asset("assets/forward arrow.svg"),
-                      ],
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xffED7D2B),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
                     ),
                   ),
-                ),
-                SizedBox(height: 15),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: ()  {
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Sign_Up(type: 'Cooperate Account'), // Replace with the desired type
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Cooperate Account",
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.white,
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xffED7D2B),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32),
                       ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Cooperate Account",
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SvgPicture.asset("assets/forward arrow.svg"),
-                      ],
-                    ),
+                      SvgPicture.asset("assets/forward arrow.svg"),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          );
-        },
-      );
+              ),
+            ],
+          ),
+        );
+      },
+    );
 
-      // Validation passed, perform the desired action
-      // e.g., submit the form, update the data, etc.
-
-
+    // Validation passed, perform the desired action
+    // e.g., submit the form, update the data, etc.
   }
 
   @override
@@ -500,13 +519,13 @@ class _Log_InState extends State<Log_In> {
                       },
                     ),
                   ),
-                  if (_apiErrorMessage=="Inavalid username or password")
+                  if (_apiErrorMessage == "Inavalid username or password")
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0,left: 20),
+                      padding: const EdgeInsets.only(top: 8.0, left: 20),
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          _apiErrorMessage ??" ",
+                          _apiErrorMessage ?? " ",
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.red,
@@ -558,20 +577,20 @@ class _Log_InState extends State<Log_In> {
                     ),
                   ),
                   // ),
-                  if(_apiErrorMessage!="null")
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0,left: 20),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        _apiErrorMessage ??" ",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.red,
+                  if (_apiErrorMessage != "null")
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0, left: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          _apiErrorMessage ?? " ",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
@@ -592,9 +611,6 @@ class _Log_InState extends State<Log_In> {
               height: 50,
               child: ElevatedButton(
                   onPressed: () async {
-
-
-
                     try {
                       var ahsan = await ApiServicesForLogIn.login(
                         email.text,
@@ -614,11 +630,9 @@ class _Log_InState extends State<Log_In> {
                         print("message is: $_apiErrorMessage");
                       }
 
-
                       if (ahsan.user != null && ahsan.token != null) {
                         _login(context, ahsan.user!.id.toString());
                         print(ahsan.user!.id);
-
                         _submitForm(context);
                       }
                     } catch (error) {
@@ -713,8 +727,7 @@ class _Log_InState extends State<Log_In> {
                 SizedBox(width: 5),
                 InkWell(
                   onTap: () {
-    _signupForm(context);
-
+                    _signupForm(context);
                   },
                   child: Text(
                     "Signup",
@@ -742,6 +755,4 @@ class _Log_InState extends State<Log_In> {
       ),
     );
   }
-
-
 }

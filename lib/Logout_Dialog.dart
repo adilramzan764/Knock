@@ -85,8 +85,9 @@ class LogoutDialog {
                         _logout(context);
 
                         LogoutApi.logout().then((data) {
-                          // Navigator.pop(context);
                           _startLoading(context);
+                          // Navigator.pop(context);
+
 
                           if (data.message != null) {
                             print(data

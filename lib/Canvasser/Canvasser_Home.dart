@@ -1,24 +1,25 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:knock/Canvasser/Canvasser_Customer.dart';
-import 'package:knock/Canvasser/Walk_Sheet.dart';
-import 'package:knock/Canvasser/District.dart';
-import 'package:knock/Log%20in/Log_In.dart';
-import 'package:knock/Models/LogoutModel.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../ApiServices/Logout_Api.dart';
-import '../Data Management/Data_Manage_Screen.dart';
 import '../District Map/Map.dart';
-import '../MyDialog.dart';
+import '../Logout_Dialog.dart';
 import '../Notification/Political_Notification.dart';
 import '../Political Dashboard/Manage_Campaigns.dart';
 import '../Setting/Set_Screen.dart';
-import 'Canvasser_Compaigns.dart';
 
-class Canvasser_Home extends StatelessWidget {
+
+class Canvasser_Home extends StatefulWidget {
   const Canvasser_Home({Key? key}) : super(key: key);
+
+  @override
+  State<Canvasser_Home> createState() => _Canvasser_HomeState();
+}
+
+class _Canvasser_HomeState extends State<Canvasser_Home> {
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +31,12 @@ class Canvasser_Home extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage("assets/rae lil black.jpg"),
                           fit: BoxFit.cover),
                       borderRadius: BorderRadius.circular(100),
@@ -43,8 +44,8 @@ class Canvasser_Home extends StatelessWidget {
                     height: 50,
                     width: 50,
                   ),
-                  SizedBox(width: 10),
-                  Column(
+                  const SizedBox(width: 10),
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -62,7 +63,7 @@ class Canvasser_Home extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               InkWell(
                 onTap: () {
                   Get.back();
@@ -70,65 +71,66 @@ class Canvasser_Home extends StatelessWidget {
                 child: Row(
                   children: [
                     SvgPicture.asset("assets/drawer home pic.svg"),
-                    SizedBox(width: 8),
-                    Text(
+                    const SizedBox(width: 8),
+                    const Text(
                       "Home",
                       style: TextStyle(fontSize: 15, color: Colors.black),
                     )
                   ],
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               InkWell(
                 onTap: () {
-                  Get.to(() => MapScreen());
+                  Get.to(() => const MapScreen());
                 },
                 child: Row(
                   children: [
                     SvgPicture.asset("assets/drawer map.svg"),
-                    SizedBox(width: 8),
-                    Text(
+                    const SizedBox(width: 8),
+                    const Text(
                       "Map",
                       style: TextStyle(fontSize: 15, color: Colors.black),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               InkWell(
                 onTap: () {
-                  Get.to(() => Manage_Campaigns());
+                  Get.to(() => const Manage_Campaigns());
                 },
                 child: Row(
                   children: [
                     SvgPicture.asset("assets/drawer compagins.svg"),
-                    SizedBox(width: 8),
-                    Text(
+                    const SizedBox(width: 8),
+                    const Text(
                       "All Campaigns",
                       style: TextStyle(fontSize: 15, color: Colors.black),
                     )
                   ],
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               InkWell(
                 onTap: () {
-                  Get.to(() => Set_Screen());
+                  Get.to(() => const Set_Screen());
                 },
                 child: Row(
                   children: [
                     SvgPicture.asset("assets/drawer setting.svg"),
-                    SizedBox(width: 8),
-                    Text(
+                    const SizedBox(width: 8),
+                    const Text(
                       "Setting",
                       style: TextStyle(fontSize: 15, color: Colors.black),
                     )
                   ],
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               InkWell(
                 onTap: () async {
+
                   LogoutDialog.showResponseDialog(context);
 
                 },
@@ -137,8 +139,8 @@ class Canvasser_Home extends StatelessWidget {
                   child: Row(
                     children: [
                       SvgPicture.asset("assets/drawer logout.svg"),
-                      SizedBox(width: 8),
-                      Text(
+                      const SizedBox(width: 8),
+                      const Text(
                         "Log Out",
                         style: TextStyle(fontSize: 15, color: Colors.black),
                       )
@@ -155,7 +157,7 @@ class Canvasser_Home extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -166,27 +168,27 @@ class Canvasser_Home extends StatelessWidget {
                         },
                         child: SvgPicture.asset("assets/Drawer.svg"));
                   }),
-                  Text("Canvasser Dashboard",
+                  const Text("Canvasser Dashboard",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.black,
                           fontWeight: FontWeight.w500)),
                   InkWell(
                       onTap: () {
-                        Get.to(() => Political_Notification());
+                        Get.to(() => const Political_Notification());
                       },
                       child: SvgPicture.asset("assets/Notification.svg")),
                 ],
               ),
-              SizedBox(height: 10),
-              Align(
+              const SizedBox(height: 10),
+              const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Good morning,",
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
-              Align(
+              const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Terri Cartwright",
@@ -196,40 +198,40 @@ class Canvasser_Home extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(children: [
                 Expanded(
                   child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xffed7d2b),
+                          primary: const Color(0xffed7d2b),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32))),
-                      child: Text(
+                      child: const Text(
                         "Active Campaigns",
                         style: TextStyle(fontSize: 13, color: Colors.white),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Expanded(
                   child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xffed7d2b),
+                          primary: const Color(0xffed7d2b),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32))),
-                      child: Text(
+                      child: const Text(
                         "Completed Campaigns",
                         style: TextStyle(fontSize: 13, color: Colors.white),
                       )),
                 ),
               ]),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Container(
                 decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
+                  color: const Color(0xfffafafa),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 height: 130,
@@ -238,12 +240,12 @@ class Canvasser_Home extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     children: [
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         children: [
                           Container(
                               decoration: BoxDecoration(
-                                color: Color(0xffed7d2b),
+                                color: const Color(0xffed7d2b),
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               height: 20,
@@ -257,21 +259,21 @@ class Canvasser_Home extends StatelessWidget {
                                   ),
                                 ),
                               )),
-                          SizedBox(width: 10),
-                          
-                          Text(
+                          const SizedBox(width: 10),
+
+                          const Text(
                             "0025 Kuvalis Landing",
                             style: TextStyle(
                                 fontSize: 14, color: Color(0xff323437)),
                           )
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
                           Container(
                               decoration: BoxDecoration(
-                                color: Color(0xff14b15c),
+                                color: const Color(0xff14b15c),
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               height: 20,
@@ -285,19 +287,19 @@ class Canvasser_Home extends StatelessWidget {
                                   ),
                                 ),
                               )),
-                          SizedBox(width: 10),
-                          Text(
+                          const SizedBox(width: 10),
+                          const Text(
                             "724 Denesik Pines",
                             style: TextStyle(
                                 fontSize: 14, color: Color(0xff323437)),
                           )
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
+                          const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -320,11 +322,11 @@ class Canvasser_Home extends StatelessWidget {
                             child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
-                                    primary: Color(0xffed7d2b),
+                                    primary: const Color(0xffed7d2b),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(32))),
-                                child: Text(
+                                child: const Text(
                                   "Start",
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.white),
@@ -336,10 +338,10 @@ class Canvasser_Home extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
                 decoration: BoxDecoration(
-                  color: Color(0xfffafafa),
+                  color: const Color(0xfffafafa),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 height: 130,
@@ -348,12 +350,12 @@ class Canvasser_Home extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     children: [
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         children: [
                           Container(
                               decoration: BoxDecoration(
-                                color: Color(0xffed7d2b),
+                                color: const Color(0xffed7d2b),
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               height: 20,
@@ -367,20 +369,20 @@ class Canvasser_Home extends StatelessWidget {
                                   ),
                                 ),
                               )),
-                          SizedBox(width: 10),
-                          Text(
+                          const SizedBox(width: 10),
+                          const Text(
                             "5923 Camille Junction",
                             style: TextStyle(
                                 fontSize: 14, color: Color(0xff323437)),
                           )
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
                           Container(
                               decoration: BoxDecoration(
-                                color: Color(0xff14b15c),
+                                color: const Color(0xff14b15c),
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               height: 20,
@@ -394,19 +396,19 @@ class Canvasser_Home extends StatelessWidget {
                                   ),
                                 ),
                               )),
-                          SizedBox(width: 10),
-                          Text(
+                          const SizedBox(width: 10),
+                          const Text(
                             "322 Bret Turnpike",
                             style: TextStyle(
                                 fontSize: 14, color: Color(0xff323437)),
                           )
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
+                          const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -429,11 +431,11 @@ class Canvasser_Home extends StatelessWidget {
                             child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
-                                    primary: Color(0xffed7d2b),
+                                    primary: const Color(0xffed7d2b),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(32))),
-                                child: Text(
+                                child: const Text(
                                   "Start",
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.white),
@@ -445,19 +447,18 @@ class Canvasser_Home extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Container(
                 height: 0.5,
                 width: Get.width,
-                color: Color(0xffefefef),
+                color: const Color(0xffefefef),
               ),
-              SizedBox(height: 15),
-              SizedBox(height: 10),
+              const SizedBox(height: 15),
+              const SizedBox(height: 10),
             ],
           ),
         ),
       ),
     );
   }
-
 }
