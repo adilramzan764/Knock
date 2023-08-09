@@ -25,7 +25,7 @@ class Second_Page extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Allowing Every campaign to be canvassed",
+                      "Allowing Everyyyy campaign to be canvassed",
                       style: TextStyle(
                           fontSize: 15,
                           color: Colors.black,
