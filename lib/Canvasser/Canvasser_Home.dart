@@ -45,7 +45,7 @@ class _Canvasser_HomeState extends State<Canvasser_Home> {
                     width: 50,
                   ),
                   const SizedBox(width: 10),
-                  const Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -299,7 +299,7 @@ class _Canvasser_HomeState extends State<Canvasser_Home> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Column(
+                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -408,7 +408,7 @@ class _Canvasser_HomeState extends State<Canvasser_Home> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Column(
+                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
